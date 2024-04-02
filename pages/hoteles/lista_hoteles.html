@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Hoteles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/hoteles.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+</head>
+<body>
+    <div class="container profile-page" id="commerces">
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../perfil/perfil.html">User</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="../hoteles/mi_hotel.html">Registrar empresa</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="../hoteles/lista_hoteles.html">Ver empresas</a></li>
+            </ol>
+            <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn">
+                  <div class="profile-img">
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+        
+                  <span
+                    >Perfil
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </div>
+        
+                <ul class="profile-dropdown-list">
+                  <li class="profile-dropdown-list-item">
+                    <a href="/pages/perfil/perfil.html">
+                      <i class="fa-regular fa-user"></i>
+                      Edit Profile
+                    </a>
+                  </li>
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="/pages/hoteles/mi_hotel.html">
+                      <i class="fa-regular fa-envelope"></i>
+                      Mi Hotel
+                    </a>
+                  </li>
+        
+                  
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-solid fa-sliders"></i>
+                      Settings
+                    </a>
+                  </li>
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-regular fa-circle-question"></i>
+                      Help & Support
+                    </a>
+                  </li>
+                  <hr />
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                      Log out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+        </nav>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            axios.get(`https://mercachula.vercel.app/commerce/all?token=${localStorage.getItem("token")}`, {
+                responseType: "json"
+            })
+                .then((commerceData) => {
+                    commerceData.data.map((obj) => {
+                        const html = `
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-7 col-md-12">
+                                    <div class="card profile-header">
+                                        <div class="body">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-12">
+                                                    <div class="profile-image float-md-right"> <img src=${obj.image.url} id="image"> </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-12">
+                                                    <h4 class="m-t-0 m-b-0"><strong>${obj.NombreComercio}</strong></h4>
+                                                    <h4 class="m-t-0 m-b-0">${obj.tipo}</h4>
+                                                    <h4 class="m-t-0 m-b-0">${obj.NumeroContacto}</h4>
+                                                    <span class="job_post">${obj.LinkUbicacion}</span>
+                                                    <p>${obj.Descripcion}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+                        document.querySelector(".main-breadcrumb").insertAdjacentHTML('afterend', html);
+                    })
+                })
+        })
+    </script>
+    <script src="/scripts/perfil.js"></script>
+</body>
+</html>
+

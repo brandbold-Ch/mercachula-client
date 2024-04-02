@@ -1,0 +1,80 @@
+body {
+    margin-top: 20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
+    font-family: Arial, sans-serif; /* Fuente alternativa para mayor legibilidad */
+}
+
+/* Estilos para el contenedor principal */
+.main-body {
+    padding: 15px;
+}
+
+/* Estilos para las tarjetas */
+.card {
+    box-shadow: 0 4px 6px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+    border-radius: 10px; /* Bordes redondeados para una apariencia más suave */
+}
+
+.card-body {
+    padding: 1.5rem; /* Aumentar el espacio interno para mayor comodidad de lectura */
+}
+
+/* Estilos para los espaciadores */
+.mb-3, .my-3 {
+    margin-bottom: 1.5rem!important; /* Incrementar el espacio entre elementos */
+}
+
+/* Estilos para la navegación */
+.breadcrumb {
+    background-color: transparent; /* Eliminar el fondo del breadcrumb */
+    padding: 0;
+    margin-bottom: 20px; /* Espacio inferior para separar la navegación del contenido */
+}
+
+.breadcrumb-item a {
+    color: #6c757d; /* Color del enlace */
+    text-decoration: none; /* Eliminar subrayado */
+    transition: color 0.3s; /* Transición suave del color */
+}
+
+.breadcrumb-item a:hover {
+    color: #007bff; /* Cambiar color al pasar el mouse */
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+    max-width: 800px; /* Ampliar el ancho máximo para evitar que el formulario se vea demasiado comprimido */
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave para resaltar el formulario */
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    padding: 12px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}

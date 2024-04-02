@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos del banner */
+.banner {
+    background: url(/images/tapachula-ia.jpeg) no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding-top: 74px;
+}
+
+.banner-content {
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+.banner img {
+    margin-bottom: 27px;
+}
+
+.banner h2 {
+    font-weight: 500;
+    font-size: 37px;
+    margin-bottom: 32px;
+}
+
+.subscribe-btn {
+    padding: 9px 13px;
+    margin-bottom: 37px;
+    display: inline-block;
+    border: 2px solid #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Estilos de las secciones */
+.section {
+    background-image: url();
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+}
+.section1{
+    background-image: url(/images/Mapa_cnetro.png);
+    
+    margin-bottom: 30px;
+    padding: 200px;
+    background-color: #fff;
+
+}
+
+.dark-bg {
+    background-color: #111010;
+    color: #fff;
+}
+
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section-text {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.section-content {
+    display: flex;
+    align-items: center;
+}
+
+.section-content img {
+    flex: 1;
+    max-width: 50%;
+    margin-right: 20px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}

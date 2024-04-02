@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles2.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+</head>
+
+<body>
+    <div class="container profile-page" id="commerces">
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../perfil/perfil.html">User</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="../hoteles/mi_hotel.html">Registrar empresa</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="../hoteles/lista_hoteles.html">Ver empresas</a></li>
+            </ol>
+
+            <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn">
+                  <div class="profile-img">
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+        
+                  <span
+                    >Perfil
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </div>
+        
+                <ul class="profile-dropdown-list">
+                  <li class="profile-dropdown-list-item">
+                    <a href="/pages/perfil/perfil.html">
+                      <i class="fa-regular fa-user"></i>
+                      Edit Profile
+                    </a>
+                  </li>
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="/pages/hoteles/mi_hotel.html">
+                      <i class="fa-regular fa-envelope"></i>
+                      Mi Hotel
+                    </a>
+                  </li>
+        
+                  
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-solid fa-sliders"></i>
+                      Settings
+                    </a>
+                  </li>
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-regular fa-circle-question"></i>
+                      Help & Support
+                    </a>
+                  </li>
+                  <hr />
+        
+                  <li class="profile-dropdown-list-item">
+                    <a href="#">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                      Log out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+
+        </nav>
+    </div>
+    <div class="container">
+        <h2 class="mt-5 mb-4">Agregar Hotel</h2>
+        <form id="agregarHotelForm" action="lista_hoteles.html" method="post">
+            <div class="mb-3">
+                <label for="NombreComercio" class="form-label">Nombre del Hotel:</label>
+                <input type="text" class="form-control" id="NombreComercio" name="NombreComercio" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Descripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="Descripcion" name="Descripcion" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <input type="text" class="form-control" id="tipo" name="tipo" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="LinkUbicacion" class="form-label">Link de Ubicación:</label>
+                <input type="text" class="form-control" id="LinkUbicacion" name="LinkUbicacion" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="NumeroContacto" class="form-label">Número del Hotel:</label>
+                <input type="tel" class="form-control" id="NumeroContacto" name="NumeroContacto" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Imágenes del Hotel:</label>
+                <input type="file" class="form-control" id="image" name="image" multiple required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar Hotel</button>
+        </form>
+        <div class="alert alert-danger" role="alert" id="errorDiv">
+            <p>Hubo un error en la creación del comercio</p>
+        </div>
+        <div class="alert alert-success" role="alert" id="successDiv">
+            <p>Comercio guardado</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("agregarHotelForm").addEventListener("submit", (evt) => {
+            evt.preventDefault();
+
+            const nombre = document.getElementById("NombreComercio").value;
+            const descripcion = document.getElementById("Descripcion").value;
+            const ubicacion = document.getElementById("LinkUbicacion").value;
+            const celular = document.getElementById("NumeroContacto").value;
+            const tipo = document.getElementById("tipo").value;
+            const imagen = document.getElementById("image").files[0];
+
+            const formData = new FormData();
+            formData.append("NombreComercio", nombre);
+            formData.append("Descripcion", descripcion);
+            formData.append("LinkUbicacion", ubicacion);
+            formData.append("tipo", tipo);
+            formData.append("NumeroContacto", celular);
+            formData.append("image", imagen);
+
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                axios.post(`https://mercachula.vercel.app/commerce?token=${localStorage.getItem("token")}`, formData, {"Content-Type": "multipart/form-data"})
+                    .then(() => {
+                        document.getElementById("successDiv").style.visibility = "visible";
+                    })
+                    .catch(() => {
+                        document.getElementById("errorDiv").style.visibility = "visible";
+                    })
+            }
+            reader.readAsArrayBuffer(imagen);
+        });
+    </script>
+    <script src="/scripts/perfil.js"></script>
+</body>
+</html>
